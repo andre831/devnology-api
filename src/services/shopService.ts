@@ -1,7 +1,7 @@
-import * as todo from "../database/shop/shopQuery";
+import * as todo from "../database/shopQuery";
 
-function postCartFromUSer(id: string) {
-  return todo.postCartFromUSer(id);
+function postShopCart(id: number) {
+  return todo.postShopCart(id);
 }
 
-export { postCartFromUSer };
+export { postShopCart };

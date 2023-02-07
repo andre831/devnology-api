@@ -7,10 +7,10 @@ import * as shopService from "../services/shopService";
 
 const router = express.Router();
 
-router.get("/teste/:id", async (req, res) => {
+router.post("/shopcart/:id", async (req, res) => {
   const params = req.params;
 
-  const tasks = shopService.postCartFromUSer("1");
+  const tasks = shopService.postShopCart(1);
 
   res.json(tasks);
 

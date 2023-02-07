@@ -1,15 +1,13 @@
-import pgPromise from "pg-promise";
+// import prisma from "./client";
 
-const base = {
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  host: "localhost",
-  port: Number(process.env.POSTGRES_PORT),
-  database: process.env.POSRGRES_DB,
-};
+// import { getUser, createUser } from "./userQuery";
 
-const pgp = pgPromise({});
-
-const db = pgp(base);
-
-export { db };
+// main()
+//   .then(async () => {
+//     await prisma.$disconnect();
+//   })
+//   .catch(async (e) => {
+//     console.error(e);
+//     await prisma.$disconnect();
+//     process.exit(1);
+//   });

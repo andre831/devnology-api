@@ -1,32 +1,23 @@
-FROM node:16
+# Build stage
+FROM node:16 AS build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
+COPY  package*.json /app/
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 3333
-CMD [ "node", "server.js" ]
+RUN npm run build
 
-# # Build stage
-# FROM node:16 AS build
+# Run stage
+FROM node:16-alpine
 
-# WORKDIR /usr/src/app/
+WORKDIR /app
 
-# COPY  package*.json ./
+COPY --from=build /app/dist /app
 
-# RUN npm install
+COPY --from=build /app/node_modules /app/node_modules
 
-# COPY . .
-
-# RUN npm run build
-
-# # Run stage
-# FROM node:16-alpine
-# WORKDIR /app
-# COPY --from=build /app/dist /app
-# COPY --from=build /app/node_modules /app/node_modules
-# CMD ["npm", "start"]
+CMD ["node", "server.js"]

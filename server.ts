@@ -3,7 +3,7 @@ import * as env from "dotenv";
 
 env.config();
 
-const PORT = process.env.PORT;
+const PORT = 3333;
 
 const APP = express();
 

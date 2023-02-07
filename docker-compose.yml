@@ -2,17 +2,17 @@ version: "3"
 
 services:
   app:
-    container-name: devnology-api
+    container_name: devnology-api
     build: .
-    command: npm start
+    command: node server.js
     ports:
       - "8082:3333"
-    volume:
+    volumes:
       - .:/usr/app
 
-  postgres:
-    container-name: devnology-db
-    image: postgres-alpine
+  db:
+    container_name: devnology-db
+    image: postgres:13.9-alpine
     environment:
       POSTGRES_USER: dev8
       POSTGRES_PASSWORD: dev8123

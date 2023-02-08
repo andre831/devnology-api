@@ -1,14 +1,14 @@
 import prisma from "./client";
 
-import { NewUser } from "../types/User";
+import { NewUser, User } from "../types/User";
 
-async function getUser(id: number) {
+async function getUser(id: number): Promise<User[]> {
   const onlyUser = await prisma.user.findMany({ where: { id } });
 
   return onlyUser;
 }
 
-async function createUser(newUser: NewUser) {
+async function createUser(newUser: NewUser): Promise<User> {
   const user = await prisma.user.create({
     data: {
       name: newUser.name,

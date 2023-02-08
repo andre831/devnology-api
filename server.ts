@@ -14,6 +14,7 @@ APP.use(express.json());
 APP.use(cors());
 
 APP.use("/user", require("./src/router/userRoutes"));
+APP.use("/delivery", require("./src/router/deliveryRoutes"));
 
 APP.use((req, res, next) => {
   res.status(404);

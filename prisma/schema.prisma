@@ -35,7 +35,7 @@ model PurchaseData {
   userId        Int    @unique
   user          User   @relation(fields: [userId], references: [id])
   name          String
-  lastName      String
+  last_name     String
   shopping_card Json
   document      String
 }

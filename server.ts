@@ -15,6 +15,7 @@ APP.use(cors());
 
 APP.use("/user", require("./src/router/userRoutes"));
 APP.use("/delivery", require("./src/router/deliveryRoutes"));
+APP.use("/purchase", require("./src/router/purchaseRoutes"));
 
 APP.use((req, res, next) => {
   res.status(404);

@@ -31,13 +31,13 @@ model DeliveryLocal {
 }
 
 model PurchaseData {
-  id          Int    @id @default(autoincrement())
-  userId      Int    @unique
-  user        User   @relation(fields: [userId], references: [id])
-  name        String
-  lastName    String
-  credit_card String
-  document    String
+  id            Int    @id @default(autoincrement())
+  userId        Int    @unique
+  user          User   @relation(fields: [userId], references: [id])
+  name          String
+  lastName      String
+  shopping_card Json
+  document      String
 }
 
 model ShopCart {

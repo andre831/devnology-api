@@ -13,6 +13,7 @@ APP.use(express.json());
 
 APP.use(cors());
 
+APP.use("/login", require("./src/router/authRoutes"));
 APP.use("/user", require("./src/router/userRoutes"));
 APP.use("/delivery", require("./src/router/deliveryRoutes"));
 APP.use("/purchase", require("./src/router/purchaseRoutes"));

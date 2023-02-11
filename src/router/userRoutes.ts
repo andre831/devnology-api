@@ -15,15 +15,4 @@ router.get("/:id", async (req, res) => {
   });
 });
 
-router.post("/new", async (req, res) => {
-  const body = req.body;
-
-  const createdUser = userService.createUser(body);
-
-  res.json({
-    success: true,
-    data: await createdUser,
-  });
-});
-
 module.exports = router;

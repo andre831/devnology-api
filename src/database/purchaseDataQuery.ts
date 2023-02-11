@@ -17,8 +17,8 @@ async function createPurchaseDataUser(
       userId: newInfos.userId,
       name: newInfos.name,
       last_name: newInfos.last_name,
-      document: newInfos.document,
       shopping_card: JSON.stringify(newInfos.shopping_card),
+      document: newInfos.document,
     },
   });
 
@@ -26,6 +26,10 @@ async function createPurchaseDataUser(
 }
 
 async function updatePurchaseInfos(infos: PurchaseData): Promise<PurchaseData> {
+  const shopAsString = JSON.stringify(infos.shopping_card);
+
+  infos.shopping_card = shopAsString;
+
   const updatedInfos = await prisma.purchaseData.update({
     where: { id: infos.id },
     data: infos,

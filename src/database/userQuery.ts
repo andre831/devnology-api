@@ -1,4 +1,5 @@
 import prisma from "./client";
+import bcrypt from "bcryptjs";
 
 import { NewUser, User } from "../types/User";
 
@@ -14,7 +15,7 @@ async function createUser(newUser: NewUser): Promise<User> {
       name: newUser.name,
       last_name: newUser.last_name,
       email: newUser.email,
-      password: newUser.password,
+      password: await bcrypt.hash(newUser.password, 15),
     },
   });
 

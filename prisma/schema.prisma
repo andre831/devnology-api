@@ -18,7 +18,7 @@ model User {
   password      String
   DeliveryLocal DeliveryLocal?
   PurchaseData  PurchaseData?
-  ShopCart      ShopCart?
+  ShopCart      ShopCart[]
 }
 
 model DeliveryLocal {
@@ -42,7 +42,7 @@ model PurchaseData {
 
 model ShopCart {
   id             Int    @id @default(autoincrement())
-  userId         Int    @unique
+  userId         Int
   user           User   @relation(fields: [userId], references: [id])
   product_name   String
   product_amount Int

@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://dev8:dev8123@devnology-db:5432/devnology?schema=public"
 }
 
 model User {
@@ -36,7 +36,7 @@ model PurchaseData {
   user          User   @relation(fields: [userId], references: [id])
   name          String
   last_name     String
-  shopping_card Json
+  shopping_card String
   document      String
 }
 

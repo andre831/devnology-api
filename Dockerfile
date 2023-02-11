@@ -5,9 +5,13 @@ WORKDIR /app
 
 COPY  package*.json /app/
 
+COPY prisma prisma 
+
 RUN npm install
 
 COPY . .
+
+RUN npx prisma generate
 
 RUN npm run build
 
@@ -19,5 +23,9 @@ WORKDIR /app
 COPY --from=build /app/dist /app
 
 COPY --from=build /app/node_modules /app/node_modules
+
+COPY --from=build /app/prisma /app/prisma
+
+EXPOSE 3333
 
 CMD ["node", "server.js"]

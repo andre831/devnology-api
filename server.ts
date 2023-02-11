@@ -5,7 +5,7 @@ import prisma from "./src/database/client";
 
 env.config();
 
-const PORT = 8082;
+const PORT = 3333;
 
 const APP = express();
 

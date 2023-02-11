@@ -13,13 +13,12 @@ async function createPurchaseDataUser(
   newInfos: NewPurchaseData
 ): Promise<PurchaseData> {
   const createdPurchaseData = await prisma.purchaseData.create({
-    where: { userId: newInfos.userId },
     data: {
       userId: newInfos.userId,
       name: newInfos.name,
       last_name: newInfos.last_name,
       document: newInfos.document,
-      shopping_card: newInfos.shopping_card,
+      shopping_card: JSON.stringify(newInfos.shopping_card),
     },
   });
 

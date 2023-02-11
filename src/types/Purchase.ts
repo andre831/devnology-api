@@ -12,7 +12,7 @@ export interface PurchaseData {
   name: string;
   last_name: string;
   document: string;
-  shopping_card: ShoppingCard;
+  shopping_card: string;
 }
 
 export interface ShoppingCard {

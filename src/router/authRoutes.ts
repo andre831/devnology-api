@@ -9,22 +9,27 @@ router.post("/", async (req, res) => {
 
   const user = await authService.login(body);
 
-  console.log(user);
-
-  if (!user[0].authenticated) {
-    return res.status(401).json({
-      success: false,
-      message: "No authenticated",
+  if (user.auth) {
+    return res.json({
+      success: true,
+      data: user,
     });
-
-    return res.json();
-
-    res.sendStatus(401);
   }
+
+  return res.status(401).json({
+    success: false,
+    messsage: user.status,
+  });
+});
+
+router.post("/new", async (req, res) => {
+  const body = req.body;
+
+  const createdUser = await authService.signUp(body);
 
   res.json({
     success: true,
-    data: await user,
+    data: createdUser,
   });
 });
 

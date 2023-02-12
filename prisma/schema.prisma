@@ -11,33 +11,36 @@ datasource db {
 }
 
 model User {
-  id            Int            @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   name          String
   last_name     String
   email         String
   password      String
-  DeliveryLocal DeliveryLocal?
-  PurchaseData  PurchaseData?
+  DeliveryLocal DeliveryLocal[]
+  PurchaseData  PurchaseData[]
   ShopCart      ShopCart[]
+  ResumeShop    ResumeShop[]
 }
 
 model DeliveryLocal {
-  id         Int    @id @default(autoincrement())
-  userId     Int    @unique
-  user       User   @relation(fields: [userId], references: [id])
+  id         Int          @id @default(autoincrement())
+  userId     Int
+  user       User         @relation(fields: [userId], references: [id])
   way        String
   complement String
   cep        String
+  ResumeShop ResumeShop[]
 }
 
 model PurchaseData {
-  id            Int    @id @default(autoincrement())
-  userId        Int    @unique
-  user          User   @relation(fields: [userId], references: [id])
+  id            Int          @id @default(autoincrement())
+  userId        Int
+  user          User         @relation(fields: [userId], references: [id])
   name          String
   last_name     String
   shopping_card String
   document      String
+  ResumeShop    ResumeShop[]
 }
 
 model ShopCart {
@@ -47,4 +50,16 @@ model ShopCart {
   product_name   String
   product_amount Int
   product_price  String
+}
+
+model ResumeShop {
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  user          User          @relation(fields: [userId], references: [id])
+  localId       Int
+  deliveryLocal DeliveryLocal @relation(fields: [localId], references: [id])
+  purchaseId    Int
+  purchaseData  PurchaseData  @relation(fields: [purchaseId], references: [id])
+  items         String
+  total         String
 }

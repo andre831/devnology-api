@@ -5,13 +5,7 @@ export interface LoginRequestAuth {
   password: string;
 }
 
-export interface LoginAuthorized {
-  token: string | null;
-  auth: boolean;
-  status: string;
-}
-
-export interface SignUpAuthorized {
+export interface UserAuthorized {
   token: string | null;
   auth: boolean;
   user?: User;

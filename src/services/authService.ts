@@ -2,15 +2,11 @@ import * as AUTH from "../database/authQuery";
 
 import jwt from "jsonwebtoken";
 import { NewUser } from "../types/User";
-import {
-  LoginAuthorized,
-  LoginRequestAuth,
-  SignUpAuthorized,
-} from "../types/Auth";
+import { UserAuthorized, LoginRequestAuth } from "../types/Auth";
 
 const jwtSecret = "secret_key";
 
-async function login(userData: LoginRequestAuth): Promise<LoginAuthorized> {
+async function login(userData: LoginRequestAuth): Promise<UserAuthorized> {
   const user = await AUTH.login(userData);
 
   if (!user[0]) {
@@ -22,11 +18,11 @@ async function login(userData: LoginRequestAuth): Promise<LoginAuthorized> {
   } else {
     const token = jwt.sign({ id: user[0].id, email: user[0].email }, jwtSecret);
 
-    return { token: token, auth: true, status: "Authorized" };
+    return { token: token, auth: true, user: user[0], status: "Authorized" };
   }
 }
 
-async function signUp(newUser: NewUser): Promise<SignUpAuthorized> {
+async function signUp(newUser: NewUser): Promise<UserAuthorized> {
   const user = await AUTH.signUp(newUser);
 
   if (!user.id) {

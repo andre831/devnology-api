@@ -3,7 +3,9 @@ import prisma from "./client";
 import { Local, NewLocal } from "../types/Delivery";
 
 async function getLocal(userId: number): Promise<Local[]> {
-  const local = await prisma.deliveryLocal.findMany({ where: { userId } });
+  const local = await prisma.deliveryLocal.findMany({
+    where: { userId: userId },
+  });
 
   return local;
 }

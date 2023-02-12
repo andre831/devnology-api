@@ -23,9 +23,7 @@ async function createLocal(newLocal: NewLocal): Promise<Local> {
 
 async function updateLocal(local: Local): Promise<Local> {
   const createdLocal = await prisma.deliveryLocal.update({
-    where: {
-      id: local.id,
-    },
+    where: { id: local.id },
     data: local,
   });
 

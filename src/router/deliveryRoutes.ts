@@ -26,7 +26,7 @@ router.post("/local/:userId/create", async (req, res) => {
   });
 });
 
-router.post("/local/:userId/:id", async (req, res) => {
+router.post("/local/:userId/update", async (req, res) => {
   const body = req.body;
 
   const updatedLocal = deliveryLocalService.updateLocal(body);

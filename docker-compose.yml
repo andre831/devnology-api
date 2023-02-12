@@ -4,6 +4,7 @@ services:
   db:
     container_name: devnology-db
     image: postgres:13.9-alpine
+    restart: always
     environment:
       POSTGRES_USER: dev8
       POSTGRES_PASSWORD: dev8123
@@ -12,11 +13,11 @@ services:
       - ./data:/data/postgres
     ports:
       - "5432:5432"
-
   app:
     container_name: devnology-api
     build: .
     command: node server.js
+    restart: always
     depends_on:
       - db
     ports:

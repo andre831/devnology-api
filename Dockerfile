@@ -11,8 +11,6 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
-
 RUN npm run build
 
 # Run stage
@@ -25,6 +23,8 @@ COPY --from=build /app/dist /app
 COPY --from=build /app/node_modules /app/node_modules
 
 COPY --from=build /app/prisma /app/prisma
+
+RUN npx prisma generate
 
 EXPOSE 3333
 

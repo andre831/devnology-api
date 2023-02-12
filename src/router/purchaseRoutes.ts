@@ -4,8 +4,8 @@ import * as purchaseService from "../services/purchaseDataService";
 
 const router = express.Router();
 
-router.get("/:id", async (req, res) => {
-  const id = Number(req.params.id);
+router.get("/:userId", async (req, res) => {
+  const id = Number(req.params.userId);
 
   const purchaseInfos = purchaseService.getPurchaseDataUser(id);
 
@@ -15,7 +15,7 @@ router.get("/:id", async (req, res) => {
   });
 });
 
-router.post("/new", async (req, res) => {
+router.post("/:userId/new", async (req, res) => {
   const body = req.body;
 
   const createdPurchaseData = purchaseService.createPurchaseDataUser(body);
@@ -26,7 +26,7 @@ router.post("/new", async (req, res) => {
   });
 });
 
-router.post("/update", async (req, res) => {
+router.post("/:userId/update", async (req, res) => {
   const body = req.body;
 
   const cupdatedInfos = purchaseService.updatePurchaseInfos(body);

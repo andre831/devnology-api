@@ -18,6 +18,7 @@ APP.use("/user", require("./src/router/userRoutes"));
 APP.use("/delivery", require("./src/router/deliveryRoutes"));
 APP.use("/purchase", require("./src/router/purchaseRoutes"));
 APP.use("/shopcart", require("./src/router/shopRoutes"));
+APP.use("/resume", require("./src/router/resumeRoutes"));
 
 APP.use((req, res, next) => {
   res.status(404);
